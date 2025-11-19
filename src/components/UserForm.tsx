@@ -30,7 +30,7 @@ export default function UserForm({ onSubmit, isLoading }: UserFormProps) {
   const totalSteps = 4;
   const progress = (currentStep / totalSteps) * 100;
 
-  const updateField = (field: keyof UserProfile, value: any) => {
+  const updateField = <K extends keyof UserProfile>(field: K, value: UserProfile[K]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

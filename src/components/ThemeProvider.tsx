@@ -28,14 +28,14 @@ export function ThemeProvider({
   storageKey = 'fitness-coach-theme',
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem(storageKey) as Theme;
-    if (storedTheme) {
-      setTheme(storedTheme);
+  const [theme, setTheme] = useState<Theme>(() => {
+    try {
+      const storedTheme = localStorage.getItem(storageKey) as Theme | null;
+      return storedTheme ?? defaultTheme;
+    } catch {
+      return defaultTheme;
     }
-  }, [storageKey]);
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;

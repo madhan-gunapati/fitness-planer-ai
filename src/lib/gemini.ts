@@ -73,7 +73,7 @@ export interface FitnessPlan {
 export async function generateFitnessPlan(userProfile: UserProfile): Promise<FitnessPlan> {
   try {
     const model = genAI.getGenerativeModel({ 
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.0-flash',
       generationConfig: {
         temperature: 0.7,
         topK: 40,
@@ -96,13 +96,13 @@ User Profile:
 - Dietary Preference: ${userProfile.dietaryPreference}
 ${userProfile.medicalHistory ? `- Medical History: ${userProfile.medicalHistory}` : ''}
 ${userProfile.stressLevel ? `- Stress Level: ${userProfile.stressLevel}` : ''}
-${userProfile.sleepHours ? `- Sleep Hours: ${userProfile.sleepHours}` : ''}
-${userProfile.waterIntake ? `- Water Intake: ${userProfile.waterIntake}L/day` : ''}
+
+
 
 CRITICAL REQUIREMENTS:
 1. Generate EXACTLY 7 days of workout plans (Monday through Sunday)
-2. Generate EXACTLY 7 days of meal plans (Monday through Sunday)
-3. Each day must have different exercises and meals
+2. Generate EXACTLY 7 days of Indian meal plans (Monday through Sunday)
+3. Each day must have different exercises and Indian meals
 4. Include rest days and active recovery days
 5. Ensure variety across the week
 
@@ -162,12 +162,8 @@ IMPORTANT: Respond ONLY with valid JSON in this exact format:
       }
     ]
   },
-  "tips": [
-    "Stay hydrated throughout the day",
-    "Get adequate sleep for recovery",
-    "Listen to your body and rest when needed"
-  ],
-  "motivation": "Your fitness journey starts with a single step. Stay consistent and believe in yourself!"
+ 
+ 
 }`;
 
     const result = await model.generateContent(prompt);
@@ -572,7 +568,7 @@ function createFallbackPlan(userProfile: UserProfile): FitnessPlan {
 }
 
 export async function generateMotivationalQuote(): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
   
   const prompt = `Generate a short, inspiring fitness and wellness motivational quote (maximum 20 words). Make it unique and energizing.`;
   

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
+
 import { toast } from 'sonner';
 import { FitnessPlan } from '@/lib/gemini';
 import { 
@@ -19,8 +19,8 @@ import {
   Zap,
   Image as ImageIcon
 } from 'lucide-react';
-// import TTSControls from './TTSControls';
-// import ImageGenerator from './ImageGenerator';
+import TTSControls from './TTSControls';
+import ImageGenerator from './ImageGenerator';
 
 interface PlanDisplayProps {
   plan: FitnessPlan;
@@ -88,8 +88,8 @@ export default function PlanDisplay({ plan, onRegenerate, isRegenerating }: Plan
       };
       
       // Title
-      addText('AI FITNESS COACH', 24, true);
-      addText('Your Personalized Fitness Plan', 16, true);
+      addText('Fitness Planner AI', 24, true);
+      addText('Personalized Fitness Plan', 16, true);
       yPosition += 10;
       
       // Workout Plan
@@ -180,15 +180,15 @@ export default function PlanDisplay({ plan, onRegenerate, isRegenerating }: Plan
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-6">
+    <div className="w-full max-w-6xl mx-auto space-y-6 h-fit ">
       {/* Header with controls */}
       <Card>
         <CardHeader>
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <CardTitle className="text-2xl">Your Personalized Fitness Plan</CardTitle>
+              <CardTitle className="text-2xl"> Personalized Fitness Plan</CardTitle>
               <CardDescription>
-                AI-generated workout and nutrition plan tailored for your goals
+                workout and diet plan for your goals and diet  preferences 
               </CardDescription>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -221,35 +221,24 @@ export default function PlanDisplay({ plan, onRegenerate, isRegenerating }: Plan
         </CardHeader>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6" id="plan-content">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 " id="plan-content">
         {/* Workout Plan */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-4"
+          className="space-y-4 "
         >
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Dumbbell className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 justify-center">
+                {/* <Dumbbell className="h-5 w-5" /> */}
                 Workout Plan
               </CardTitle>
             </CardHeader>
           </Card>
 
-          {/* Workout Overview */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5" />
-                Workout Overview
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{plan?.workoutPlan?.overview || 'No workout overview available'}</p>
-            </CardContent>
-          </Card>
+          
 
           {/* Day Selector */}
           <div className="flex flex-wrap gap-2">
@@ -269,7 +258,7 @@ export default function PlanDisplay({ plan, onRegenerate, isRegenerating }: Plan
 
           {/* Selected Day Workout */}
           {plan?.workoutPlan?.weeklySchedule?.[safeSelectedDay] && (
-            <Card>
+            <Card className='h-1/2 overflow-scroll'>
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <span>{plan.workoutPlan.weeklySchedule[safeSelectedDay]?.day || 'Workout'} Workout</span>
@@ -316,29 +305,17 @@ export default function PlanDisplay({ plan, onRegenerate, isRegenerating }: Plan
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="space-y-4"
+          className="space-y-4 "
         >
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Utensils className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 justify-center">
+                {/* <Utensils className="h-5 w-5" /> */}
                 Diet Plan
               </CardTitle>
             </CardHeader>
           </Card>
 
-          {/* Diet Overview */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="h-5 w-5" />
-                Nutrition Overview
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{plan?.dietPlan?.overview || 'No diet overview available'}</p>
-            </CardContent>
-          </Card>
 
           {/* Meal Day Selector */}
           <div className="flex flex-wrap gap-2">
@@ -358,8 +335,8 @@ export default function PlanDisplay({ plan, onRegenerate, isRegenerating }: Plan
 
           {/* Selected Day Meals */}
           {plan?.dietPlan?.dailyMeals?.[safeSelectedMealDay] && (
-            <Card>
-              <CardHeader>
+            <Card  className='h-1/2 overflow-scroll'>
+              <CardHeader >
                 <CardTitle>{plan.dietPlan.dailyMeals[safeSelectedMealDay]?.day || 'Meals'} Meals</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -409,35 +386,8 @@ export default function PlanDisplay({ plan, onRegenerate, isRegenerating }: Plan
         </motion.div>
       </div>
 
-      {/* Tips Section */}
-      {plan.tips && plan.tips.length > 0 && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="h-5 w-5" />
-                Tips & Recommendations
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {plan.tips.map((tip, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-medium">
-                      {index + 1}
-                    </span>
-                    <p className="text-muted-foreground">{tip}</p>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </motion.div>
-      )}
+      
+      
     </div>
   );
 }
