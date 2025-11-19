@@ -179,32 +179,7 @@ export default function UserForm({ onSubmit, isLoading }: UserFormProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="sleep">Sleep Hours</Label>
-                  <Input
-                    id="sleep"
-                    type="number"
-                    min="4"
-                    max="12"
-                    value={formData.sleepHours || ''}
-                    onChange={(e) => updateField('sleepHours', parseInt(e.target.value))}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="water">Water Intake (L/day)</Label>
-                  <Input
-                    id="water"
-                    type="number"
-                    min="1"
-                    max="5"
-                    step="0.5"
-                    value={formData.waterIntake || ''}
-                    onChange={(e) => updateField('waterIntake', parseFloat(e.target.value))}
-                  />
-                </div>
-              </div>
+            
             </div>
           )}
 
@@ -295,8 +270,7 @@ export default function UserForm({ onSubmit, isLoading }: UserFormProps) {
                     <SelectItem value="vegetarian">Vegetarian</SelectItem>
                     <SelectItem value="vegan">Vegan</SelectItem>
                     <SelectItem value="keto">Keto</SelectItem>
-                    <SelectItem value="paleo">Paleo</SelectItem>
-                    <SelectItem value="mediterranean">Mediterranean</SelectItem>
+                  
                   </SelectContent>
                 </Select>
               </div>
