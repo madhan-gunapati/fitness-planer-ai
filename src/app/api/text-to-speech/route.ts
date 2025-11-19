@@ -6,7 +6,7 @@ import { ElevenLabsClient } from 'elevenlabs';
 export async function POST(req: Request) {
   try {
     const { text, voice } = await req.json();
-    console.log(voice)
+    
 
     if (!text) {
       return NextResponse.json({ error: 'No text provided' }, { status: 400 });

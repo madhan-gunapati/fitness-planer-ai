@@ -8,15 +8,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { toast } from 'sonner';
 import { FitnessPlan } from '@/lib/gemini';
 import { 
-  Dumbbell, 
-  Utensils, 
-  Play, 
-  Pause, 
+  
   Download, 
   RefreshCw, 
   Clock,
-  Target,
-  Zap,
+ 
   Image as ImageIcon
 } from 'lucide-react';
 import TTSControls from './TTSControls';
