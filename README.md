@@ -62,12 +62,12 @@ An advanced AI-powered fitness assistant built with **Next.js 14** that generate
 
 3. **Set up environment variables**
    ```bash
-   cp .env.example .env.local
+   cp  .env.local
    ```
    
    Edit `.env.local` and add your API keys:
    ```env
-   # Required: Google Gemini API Key
+   # Required: Google Gemini API Key & Eleven Labs API key
    GOOGLE_GEMINI_API_KEY=your_gemini_api_key_here
    ELEVEN_LABS_API_KEY=your_gemini_api_key_here
    
