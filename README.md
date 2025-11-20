@@ -1,6 +1,7 @@
 # 💪 Fitness Planner AI
 
 An advanced AI-powered fitness assistant built with **Next.js 14** that generates **personalized 7-day workout and diet plans** . 
+Access at 'https://fitness-planer-ai.vercel.app'
 
 ## 🚀 Features
 
