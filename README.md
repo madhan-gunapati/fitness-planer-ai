@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💪 Fitness Planner AI
 
-## Getting Started
+An advanced AI-powered fitness assistant built with **Next.js 14** that generates **personalized 7-day workout and diet plans** . 
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Core Functionality
+- **Personalized AI Plans**
+- **Advanced Multi-Step Form**
+- **AI Image Generation**
+- **Voice Synthesis**
+- **PDF Export**
+- **Local Storage**
+- **Dark/Light Mode**
+- **Daily Motivation**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### User Input Collection
+- **Basic Info**: Name, Age, Gender
+- **Physical Measurements**: Height, Weight
+- **Fitness Goals**: Weight Loss, Muscle Gain, General Fitness, Endurance, Strength, Flexibility
+- **Fitness Level**: Beginner, Intermediate, Advanced
+- **Workout Location**: Home (No Equipment), Home (Basic Equipment), Gym, Outdoor
+- **Dietary Preferences**: Non-Vegetarian, Vegetarian, Vegan, Keto
+- **Optional**: Medical history, stress level
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### AI-Generated Content
+- **7-Day Workout Plans**: Detailed exercises with sets, reps, rest times, and instructions
+- **7-Day Diet Plans**: Meal breakdowns with calories, ingredients, and macros
+- **Personalized Tips**: Lifestyle and fitness recommendations
+- **Daily Motivation**: AI-generated motivational quotes
+- **Exercise Images**: Unique AI-generated images for each exercise
+- **Meal Images**: Unique AI-generated images for each meal
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+| Category | Technology |
+|----------|------------|
+| **Framework** | Next.js 14 (App Router) |
+| **Styling** | Tailwind CSS + Shadcn UI |
+| **AI Integration** | Google Gemini API (gemini-2.0-flash) |
+| **Image Generation** | Gemini, Pollinations.ai|
+| **Voice Synthesis** |Eleven Labs Text-to-speech |
+| **PDF Generation** | jsPDF  |
+| **Theme** | next-themes |
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+### Step-by-Step Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/madhan-gunapati/fitness-planer-ai.git
+   cd fitness-panner-ai
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Edit `.env.local` and add your API keys:
+   ```env
+   # Required: Google Gemini API Key
+   GOOGLE_GEMINI_API_KEY=your_gemini_api_key_here
+   ELEVEN_LABS_API_KEY=your_gemini_api_key_here
+   
+  
+   ```
+
+
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
